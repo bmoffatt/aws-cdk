@@ -9044,6 +9044,11 @@ json-stable-stringify-without-jsonify@^1.0.1:
   resolved "https://registry.npmjs.org/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz#9db7b59496ad3f3cfef30a75142d2d930ad72651"
   integrity sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==
 
+json-stream-stringify@^3.0.0:
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/json-stream-stringify/-/json-stream-stringify-3.1.0.tgz#821df0993f630b7bba8198b1c966e5aaf9ec7657"
+  integrity sha512-ilynhoPlWa29XqgWJTD8V3bOF8k4Ybm3U9Oc7o/CG8qvFMGUzPlh9P4mOj9Ss3VtisA6N2OYevCWa14VRpJtQQ==
+
 json-stringify-nice@^1.1.4:
   version "1.1.4"
   resolved "https://registry.npmjs.org/json-stringify-nice/-/json-stringify-nice-1.1.4.tgz#2c937962b80181d3f317dd39aa323e14f5a60a67"

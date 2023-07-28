@@ -167,7 +167,9 @@
       "aws-cdk-lib/table",
       "aws-cdk-lib/table/**",
       "aws-cdk-lib/yaml",
-      "aws-cdk-lib/yaml/**"
+      "aws-cdk-lib/yaml/**",
+      "aws-cdk-lib/json-stream-stringify",
+      "aws-cdk-lib/json-stream-stringify/**"
     ]
   },
   "dependencies": {
