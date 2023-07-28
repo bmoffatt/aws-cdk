@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 import { Construct, IConstruct } from 'constructs';
+import { JsonStreamStringify } from 'json-stream-stringify';
 import { ConstructInfo, constructInfoFromConstruct } from './runtime-info';
 import { ArtifactType } from '../../../cloud-assembly-schema';
 import { Annotations } from '../annotations';
@@ -71,6 +72,18 @@ export class TreeMetadata extends Construct {
     this._tree = lookup;
 
     const builder = session.assembly;
+    const jsonStream = new JsonStreamStringify(tree, (key: string, value: any) => {
+      // we are adding in the `parent` attribute for internal use
+      // and it doesn't make much sense to include it in the
+      // tree.json
+      if (key === 'parent') return undefined;
+      return value;
+    }, 2);
+
+    const out = fs.createWriteStream(path.join(builder.outdir, FILE_PATH), { encoding: 'utf-8' });
+    jsonStream.pipe(out);
+    out.close();
+    /*
     fs.writeFileSync(path.join(builder.outdir, FILE_PATH), JSON.stringify(tree, (key: string, value: any) => {
       // we are adding in the `parent` attribute for internal use
       // and it doesn't make much sense to include it in the
@@ -78,7 +91,7 @@ export class TreeMetadata extends Construct {
       if (key === 'parent') return undefined;
       return value;
     }, 2), { encoding: 'utf-8' });
-
+    */
     builder.addArtifact('Tree', {
       type: ArtifactType.CDK_TREE,
       properties: {
